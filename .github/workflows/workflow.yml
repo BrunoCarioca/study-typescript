@@ -45,5 +45,3 @@ jobs:
         - name: Check lint
           run: npm run lint
         
-        - name: Check lint test
-          run: npm run lint-test 

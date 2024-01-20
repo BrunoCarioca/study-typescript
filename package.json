@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "test": "vitest --run",
-    "lint": "npx @biomejs/biome check src",
-    "lint-test": "npx @biomejs/biome check test"
+    "lint": "npx @biomejs/biome check .",
+    "lint-fix": "npx @biomejs/biome check --apply ."
   },
   "keywords": [],
   "author": "",
