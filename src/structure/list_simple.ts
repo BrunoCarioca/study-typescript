@@ -1,109 +1,107 @@
 type Books = {
-    title: string;
-    price: number;
-}
+	title: string;
+	price: number;
+};
 
 type list = {
-    value: Books;
-    next: list | null;
-}
+	value: Books;
+	next: list | null;
+};
 
 interface IList_Simple {
-    add: (value: Books) => void;
-    remove: (value: Books) => void;
-    show: () => void;
-    size: () => number;
-    search: (value: Books) => number | list;
-} 
+	add: (value: Books) => void;
+	remove: (value: Books) => void;
+	show: () => void;
+	size: () => number;
+	search: (value: Books) => number | list;
+}
 
 export default class List_Simple implements IList_Simple {
+	private list: list | null = null;
 
-    private list: list | null = null;
-    
-    public  isEmpty = () => this.list === null;
+	public isEmpty = () => this.list === null;
 
-    public show = () => {
-        if (this.isEmpty()) {
-            console.log('A lista está vazia');
-            return null;
-        } else {
-            let node = this.list;
-            while (node !== null) {
-                console.log(node.value);
-                node = node.next;
-            }
-        }
-    }
+	public show = () => {
+		if (this.isEmpty()) {
+			console.log("A lista está vazia");
+			return null;
+		}
+		let node = this.list;
+		while (node !== null) {
+			console.log(node.value);
+			node = node.next;
+		}
+	};
 
-    public add = (value: Books) => {
-        if (this.isEmpty()) { 
-            this.list = { value, next: null };
-            return;
-        }
+	public add = (value: Books) => {
+		if (this.isEmpty()) {
+			this.list = { value, next: null };
+			return;
+		}
 
-        let node = this.list;
+		let node = this.list;
 
-        while (node?.next !== null) {
-                node = node?.next ?? null;
-        }
+		while (node?.next !== null) {
+			node = node?.next ?? null;
+		}
 
-        node.next = { value, next: null };
+		node.next = { value, next: null };
 
-        return;
-    }
+		return;
+	};
 
-    public remove = (value: Books) => {
-        if(this.isEmpty()) {
-            console.log('A lista está vazia');
-            return;
-        }
+	public remove = (value: Books) => {
+		if (this.isEmpty()) {
+			console.log("A lista está vazia");
+			return;
+		}
 
-        let node = this.list;
-        
-        if (node?.value === value) {
-            this.list = node.next;
-            return;
-        }
+		let node = this.list;
 
-        while (node?.next !== null) {
-            if (node?.next.value === value) {
-                node.next = node.next.next;
-                return;
-            }
-            node = node?.next ?? null;
-        }
-    }
+		if (node?.value === value) {
+			this.list = node.next;
+			return;
+		}
 
-    public size = () => {
-        if (this.isEmpty()) {
-            return 0;
-        }
+		while (node?.next !== null) {
+			if (node?.next.value === value) {
+				node.next = node.next.next;
+				return;
+			}
+			node = node?.next ?? null;
+		}
+	};
 
-        let node = this.list;
-        let count = 0;
+	public size = () => {
+		if (this.isEmpty()) {
+			return 0;
+		}
 
-        while (node !== null) {
-            count++;
-            node = node.next;
-        }
+		let node = this.list;
+		let count = 0;
 
-        return count;
-    }
+		while (node !== null) {
+			count++;
+			node = node.next;
+		}
 
-    public search = (value: Books) => {
-        if (this.isEmpty()) {
-            return -1;
-        }
+		return count;
+	};
 
-        let node = this.list;
+	public search = (value: Books) => {
+		if (this.isEmpty()) {
+			return -1;
+		}
 
-        while (node !== null) {
-            if (node.value === value) {
-                return node;
-            }
-            node = node.next;
-        }
+		let node = this.list;
 
-        return -1;
-    }
+		while (node !== null) {
+			if (node.value === value) {
+				return node;
+			}
+			node = node.next;
+		}
+
+		return -1;
+	};
 }
