@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "test": "vitest --run",
+    "test-watch": "vitest --watch",
     "lint": "npx @biomejs/biome check .",
     "lint-fix": "npx @biomejs/biome check --apply ."
   },
