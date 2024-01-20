@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "lint": "npx @biomejs/biome check src",
+    "lint-test": "npx @biomejs/biome check test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "1.5.2",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
     "vitest": "^1.1.1"
