@@ -7,31 +7,29 @@
 // -2 + 11 = 9
 // Solução 1 O(N²)
 
-function two_sum_On2 (vector: number[], target: number): [number, number] | [] {
-    for (let i = 0; i < vector.length; i++) {
-        for (let j = 0; j < vector.length; j++) {
-            if (vector[i] + vector[j] === target) {
-                return [vector[i], vector[j]];
-            }
-        }
-    }
+function two_sum_On2(vector: number[], target: number): [number, number] | [] {
+	for (let i = 0; i < vector.length; i++) {
+		for (let j = 0; j < vector.length; j++) {
+			if (vector[i] + vector[j] === target) {
+				return [vector[i], vector[j]];
+			}
+		}
+	}
 
-    return [];
+	return [];
 }
 
-function two_sum_On (vector: number[], target: number) : [number, number] | [] {
+function two_sum_On(vector: number[], target: number): [number, number] | [] {
+	const hash = new Map();
 
-    let hash = new Map();
+	for (let i = 0; i < vector.length; i++) {
+		if (hash.has(target - vector[i])) {
+			return [hash.get(target - vector[i]), vector[i]];
+		}
+		hash.set(vector[i], vector[i]);
+	}
 
-    for (let i = 0; i < vector.length; i++) {
-        if (hash.has(target - vector[i])) {
-            return [hash.get(target - vector[i]), vector[i]];
-        }
-        hash.set(vector[i], vector[i]);
-    }
-
-    return [];
+	return [];
 }
 
-export {two_sum_On2,
-        two_sum_On }
+export { two_sum_On2, two_sum_On };

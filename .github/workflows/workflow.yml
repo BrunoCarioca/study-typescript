@@ -1,13 +1,11 @@
 name: typescript  ci
 
 on:
-  push:
-    branches: ['*']
   pull_request:
-    branches: [main]
+    branches: ['*']
 
 jobs:
-    build:
+    unit-tests:
         runs-on: ubuntu-latest
         strategy:
          matrix:
@@ -26,3 +24,24 @@ jobs:
         
         - name: Test
           run: npm test
+
+    check-lint:
+        runs-on: ubuntu-latest
+        strategy:
+         matrix:
+            node-version: [20.x]
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v2
+          with:
+            node-version: ${{ matrix.node-version }}
+        
+        - name: Install dependencies
+          run: npm install
+
+        - name: Check lint
+          run: npm run lint
+        

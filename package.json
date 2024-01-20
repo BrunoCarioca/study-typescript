@@ -7,11 +7,14 @@
     "dev": "tsx watch src/index.ts",
     "test": "vitest --run",
     "test-watch": "vitest --watch"
+    "lint": "npx @biomejs/biome check .",
+    "lint-fix": "npx @biomejs/biome check --apply ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "1.5.2",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
     "vitest": "^1.1.1"
